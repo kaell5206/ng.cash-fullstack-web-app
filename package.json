@@ -1,0 +1,21 @@
+{
+  "name": "ng.cash-fullstack-web-app",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "compose:up": "(cd app && docker-compose up -d --build)"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kaell5206/ng.cash-fullstack-web-app.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kaell5206/ng.cash-fullstack-web-app/issues"
+  },
+  "homepage": "https://github.com/kaell5206/ng.cash-fullstack-web-app#readme"
+}
