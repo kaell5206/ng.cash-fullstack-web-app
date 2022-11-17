@@ -1,5 +1,6 @@
-import * as express from 'express';
+import express from 'express';
 import 'express-async-errors';
+import userRoute from './Routes/userRoute';
 
 
 class App {
@@ -24,6 +25,8 @@ class App {
 
     this.app.use(express.json());
     this.app.use(accessControl);
+
+    this.app.use('/user', userRoute)
 
   }
 

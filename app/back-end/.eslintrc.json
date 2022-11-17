@@ -14,10 +14,16 @@
       "SharedArrayBuffer": "readonly"
     },
     "parser": "@typescript-eslint/parser",
+    "overrides": [
+      {
+      "files": ["*.ts"]
+      }
+    ],
     "parserOptions": {
-      "ecmaVersion": 2018,
-      "sourceType": "module"
-    },
+      "ecmaVersion": 2019,
+      "sourceType": "module",
+      "project": "./tsconfig.json"
+   },
     "plugins": [
       "@typescript-eslint",
       "prettier"
@@ -30,8 +36,16 @@
         {
           "ts": "never"
         }
-      ]
-    },
+      ],
+      "no-underscore-dangle": "off",
+        "no-console": "off",
+        "camelcase": "warn",
+        "arrow-parens": [2, "always"],
+        "quotes": [2, "single"],
+        "implicit-arrow-linebreak": "off",
+        "consistent-return": "off"
+    }
+    ,
     "settings": {
       "import/resolver": {
         "typescript": {

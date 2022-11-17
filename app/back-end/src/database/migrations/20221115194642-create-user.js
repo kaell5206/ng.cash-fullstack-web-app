@@ -18,11 +18,11 @@ module.exports = {
         type: Sequelize.STRING
       },
       accountId: {
-        type: Sequelize.STRING,
-        // references: {
-        //   model: 'accounts',
-        //   key: 'id'
-        // }
+        type: Sequelize.INTEGER,
+        references: {
+          model: 'Accounts',
+          key: 'id'
+        }
       }
     })
   },
