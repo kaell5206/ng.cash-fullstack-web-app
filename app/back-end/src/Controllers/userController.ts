@@ -19,4 +19,13 @@ export default class UserController {
       const token = Token.createToken(user)
       res.status(200).json({ token })
   }
+
+  public async validate(req: Request, res: Response): Promise<any> {
+    const { authorization } = req.headers;
+    if (!authorization) {
+      return res.status(401).json({ message: 'Token não encontrado.' });
+    }
+    const { id, username, accountId } = Token.readToken(authorization);
+    res.status(200).json({ id, username, accountId })
+  }
 }
