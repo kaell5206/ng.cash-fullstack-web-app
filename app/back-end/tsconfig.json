@@ -19,6 +19,6 @@
       "*": ["node_modules/*"]
     }
   },
-  "include": ["app/back-end/src/**/*"],
+  "include": ["src/**/*"],
   "exclude": ["src/tests"]
 }

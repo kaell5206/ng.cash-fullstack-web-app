@@ -1,6 +1,6 @@
 import { z } from 'zod'
 
-const userSchema = z.object({
+export const userSchema = z.object({
   id: z.number().optional(),
   username: z.string().min(3),
   password: z.string().min(8)
@@ -13,8 +13,13 @@ const userSchema = z.object({
 export interface IUser {
   id?: number;
   username: string;
-  password: string;
+  password?: string;
   accountId?: number;
+}
+
+export interface IAccount {
+  id?: number;
+  balance: number;
 }
 
 
