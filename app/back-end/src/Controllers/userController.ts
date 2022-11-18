@@ -9,6 +9,14 @@ export default class UserController {
       const validate = await userSchema.parseAsync({ username, password })
       const createUser = await UserService.register(validate)
       const token = Token.createToken(createUser)
+      res.status(201).json({ token })
+  }
+
+  public async login(req: Request & { body: IUser }, res: Response): Promise<void> {
+    const { username, password } = req.body;
+      const validate = await userSchema.parseAsync({ username, password })
+      const user = await UserService.login(validate)
+      const token = Token.createToken(user)
       res.status(200).json({ token })
   }
 }

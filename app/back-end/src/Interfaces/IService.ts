@@ -1,4 +1,3 @@
-import { Selectors } from "./IModel";
 
 export default interface IService<T> {
   add(obj: T): Promise<T>;

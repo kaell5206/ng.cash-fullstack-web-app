@@ -1,6 +1,6 @@
 import { IUser, IUserBody } from '../Interfaces/IUser';
 import User from '../database/models/user'
-import { NotFoundError } from '../Errors';
+import { ConflictError, DontExistError, ValidationError } from '../Errors';
 import { Sequelize } from 'sequelize';
 import * as config from '../database/config/database';
 import md5 from 'md5';
@@ -13,7 +13,7 @@ export default class UserService {
     const result = sequelize.transaction( async (t) => {
       const { username, password } = body
       const check = await User.findOne({ where: { username } })
-      if (check) throw new NotFoundError("Usuario já existe.");
+      if (check) throw new ConflictError("Usuario já existe.");
       const { id } = await Account.create({ balance: 100.00 }, { transaction: t, raw: true });
       const user = await User.create({ username, password: md5(password), accountId: id },
       { transaction: t, raw: true })
@@ -26,30 +26,16 @@ export default class UserService {
     return result
   }
 
-  // public static async register() {
-
-  // }
-
-  // public async findAll(): Promise<IUser[]> {
-  //   const get = await this.user.findAll();
-  //   return get;
-  // }
-
-  // public async findOne(_id: number): Promise<IUser> {
-  //   const get = await this.user.findOne({ where:  { _id } }, { raw: true });
-  //   if (!get) {
-  //     throw new Error("User not found")
-  //   }
-  //   return get;
-  // }
-
-  // public async update(_id: number, obj: IUser): Promise<IUser> {
-  //   const update = await this.user.update({ where: { _id }}, obj)
-  //   return update
-  // }
-
-  // public async destroy(_id: number): Promise<IUser> {
-  //   const del = await this.user.destroy({ where: { _id }})
-  //   return del;
-  // }
+  public static async login(body: IUser): Promise<IUser> {
+    if (!body.password || !body.username) throw new ValidationError("Campos não podem estar vazios.")
+    const { username, password } = body;
+    const check = await User.findOne({ where: { username } }, );
+    if (!check) throw new DontExistError("Usuario não encontrado.")
+    if (check.password !== md5(password))  throw new DontExistError("Senha invalida.")
+    return {
+      id: check.id,
+      username: check.username,
+      accountId: check.accountId
+    }
+  }
 }

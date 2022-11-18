@@ -2,11 +2,11 @@ import { z } from 'zod'
 
 export const userSchema = z.object({
   id: z.number().optional(),
-  username: z.string().min(3),
-  password: z.string().min(8)
-    .regex(new RegExp(".*[A-Z].*"), "One uppercase character")
-    .regex(new RegExp(".*[a-z].*"), "One lowercase character")
-    .regex(new RegExp(".*\\d.*"), "One number"),
+  username: z.string().min(3, "Username deve ter mais de 3 characteres."),
+  password: z.string().min(8, "Senha deve ter mais de 8 characteres.")
+    .regex(new RegExp(".*[A-Z].*"), "Senha deve conter uma letra maiuscula.")
+    .regex(new RegExp(".*[a-z].*"), "Senha deve conter uma letra minuscula.")
+    .regex(new RegExp(".*\\d.*"), "Senha deve conter um numero."),
   accountId: z.number().optional(),
 })
 

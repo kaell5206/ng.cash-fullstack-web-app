@@ -5,6 +5,7 @@ const errors: Record<string, number> = {
   ValidationError: 400,
   NotFoundError: 401,
   DontExistError: 404,
+  ConflictError: 409,
 };
 
 const errorMiddlewareHandler = (

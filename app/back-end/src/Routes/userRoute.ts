@@ -8,4 +8,6 @@ const controller = new UserController()
 
 userRoute.post('/register', controller.create)
 
+userRoute.post('/login', controller.login)
+
 export default userRoute;
