@@ -11,4 +11,6 @@ userRoute.post('/login', controller.login)
 
 userRoute.get('/validate', controller.validate)
 
+userRoute.get('/balance', controller.userBalance)
+
 export default userRoute;

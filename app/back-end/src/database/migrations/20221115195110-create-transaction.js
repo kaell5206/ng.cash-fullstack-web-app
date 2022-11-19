@@ -11,20 +11,28 @@ module.exports = {
       },
       debitedAccountId: {
         allowNull: false,
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
+        references: {
+          model: "Users",
+          key: "id"
+        }
       },
       creditedAccountId : {
         allowNull: false,
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
+        references: {
+          model: "Users",
+          key: "id"
+        }
       },
-      value: {
-        allowNull: false,
-        type: Sequelize.INTEGER
-      },
-      createdAt: {
-        allowNull: false,
-        type: Sequelize.DATE
-      }
+        value: {
+          allowNull: false,
+          type: Sequelize.DECIMAL(12, 2)
+        },
+        createdAt: {
+          allowNull: false,
+          type: Sequelize.DATE
+        }
     });
   },
   async down(queryInterface, Sequelize) {

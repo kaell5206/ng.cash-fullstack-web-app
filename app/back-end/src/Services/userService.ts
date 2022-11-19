@@ -1,10 +1,11 @@
-import { IUser, IUserBody } from '../Interfaces/IUser';
+import { IAccount, IUser, IUserBody } from '../Interfaces/IUser';
 import User from '../database/models/user'
 import { ConflictError, DontExistError, ValidationError } from '../Errors';
 import { Sequelize } from 'sequelize';
 import * as config from '../database/config/database';
 import md5 from 'md5';
 import Account from '../database/models/account';
+import AccountService from './accountService';
 
 const sequelize = new Sequelize(config)
 
@@ -37,5 +38,13 @@ export default class UserService {
       username: check.username,
       accountId: check.accountId
     }
+  }
+
+  public static async checkExists(username: string): Promise<IAccount> {
+    const check = await User.findOne({ where: { username }, raw: true,
+       attributes: { exclude: ['password']} });
+       if (!check) throw new DontExistError("Usuario não encontrado.");
+       const getBalance = await AccountService.getBalance(check.accountId);
+       return getBalance;
   }
 }

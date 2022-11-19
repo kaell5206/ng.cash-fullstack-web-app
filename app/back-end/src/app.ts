@@ -1,6 +1,7 @@
 import express from 'express';
 import 'express-async-errors';
 import errorMiddlewareHandler from './middlewares/errorHandlerMiddleware';
+import transcRoute from './Routes/transactionRoute';
 import userRoute from './Routes/userRoute';
 
 
@@ -28,6 +29,8 @@ class App {
     this.app.use(accessControl);
 
     this.app.use('/user', userRoute)
+
+    this.app.use('/actions', transcRoute)
 
     this.app.use(errorMiddlewareHandler)
   }

@@ -10,7 +10,7 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       balance: {
-        type: Sequelize.FLOAT,
+        type: Sequelize.DECIMAL(12, 2),
         defaultValue: 100.00
       }
   });

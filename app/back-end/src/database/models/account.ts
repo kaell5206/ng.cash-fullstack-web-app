@@ -1,6 +1,7 @@
 import { Model, DataTypes } from 'sequelize';
 import { IAccount } from '../../Interfaces/IUser';
 import db from '.'
+import Transaction from './transaction';
 
   export default class Account extends Model<IAccount> implements IAccount {
     id!: number;
@@ -15,7 +16,7 @@ import db from '.'
       type: DataTypes.INTEGER
     },
     balance: {
-      type: DataTypes.FLOAT,
+      type: DataTypes.DECIMAL(12, 2),
       defaultValue: 100.00
     }
   }, {
