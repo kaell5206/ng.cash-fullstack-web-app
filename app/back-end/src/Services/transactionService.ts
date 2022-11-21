@@ -24,7 +24,7 @@ export default class TransactionService {
       await Account.update({ balance: userNewBalance }, { where: { id: userBalance.id }, transaction: t });
       const add = await Transaction.create({ debitedAccountId: userBalance.id,
       creditedAccountId: checkCredited.id, value}, { raw: true , transaction: t });
-    return add;
+      return add;
     })
     return result;
   }

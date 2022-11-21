@@ -49,20 +49,8 @@ import Account from './account';
     sequelize: db,
     modelName: 'Transactions',
     createdAt: true,
-    updatedAt: false
+    updatedAt: false,
   });
-
-// Transaction.belongsToMany(User, { through: Account, foreignKey: 'creditedAccountId' })
-
-// Transaction.belongsToMany(User, { through: Account, foreignKey: 'debitedAccountId' })
-
-// Account.hasMany( Transaction, {
-//   foreignKey: "debitedAccountId", as: "debitedUser"
-// })
-
-// Account.hasMany( Transaction, {
-//   foreignKey: "creditedAccountId", as: "creditedUser"
-// })
 
 Transaction.belongsTo(User, { foreignKey: 'debitedAccountId', as: 'debited'})
 

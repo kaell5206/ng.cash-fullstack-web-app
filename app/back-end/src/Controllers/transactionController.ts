@@ -7,7 +7,8 @@ export default class TransactionController {
   public static async createTransaction(req: Request & { body: ITransacBody},
      res: Response): Promise<any> {
       const { authorization } = req.headers;
-      const { creditedUser, value } = req.body;
+      const { creditedUser } = req.body;
+      const value = Number(req.body.value)
       if (!authorization) {
         return res.status(401).json({ message: 'Token não encontrado.' });
       }
