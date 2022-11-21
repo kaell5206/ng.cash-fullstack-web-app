@@ -1,0 +1,14 @@
+.login_section {
+  background-image: url('../../Images/banner-landing-page.0bd7f55.jpg');
+  background-size: cover;
+}
+
+.login_area {
+  background-color: white;
+  width: 80%;
+  margin: auto;
+  display: grid;
+  gap: 2rem;
+  padding: 2vw;
+}
+

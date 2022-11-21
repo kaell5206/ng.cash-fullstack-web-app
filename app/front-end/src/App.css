@@ -1,0 +1,54 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+main {
+  position: relative;
+  font-family: 'IBM Plex Mono', sans-serif;
+  width: 100%;
+}
+
+header {
+  position: sticky;
+  width: 100%;
+}
+
+header nav {
+  background-color: black;
+  width: 100%;
+  display: flex;
+  color: white;
+  padding: 4px 24px;
+  align-items: center;
+}
+
+header nav ul {
+  display: flex;
+  list-style: none;
+  margin: 0 30px;
+}
+
+header nav ul li {
+  margin: 3px;
+  margin: 0 20px;
+}
+
+header nav ul li a {
+  text-decoration: none;
+  color: white;
+}
+
+
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
