@@ -1,7 +1,6 @@
-main {
+.login_section {
   background-image: url('../../Images/banner-landing-page.0bd7f55.jpg');
   background-size: cover;
-  position: relative;
 }
 
 .login_area {

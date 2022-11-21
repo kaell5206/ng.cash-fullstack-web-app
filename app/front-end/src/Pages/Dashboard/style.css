@@ -1,0 +1,92 @@
+.user_area {
+  display: grid;
+  gap: 50px;
+  grid-template-columns: repeat(4, 1fr);
+  width: 80%;
+  padding: 30px;
+  margin: auto;
+}
+
+.card_body {
+  height: 150px;
+  background-color: white;
+  display: grid;
+  gap: 2.5px;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  border-radius: 25px;
+  border: 1.5px solid black;
+  box-shadow: 6px 6px black; 
+}
+
+.card_link, .card_link:active {
+  color: black;
+  text-decoration: none;
+}
+
+.user_Balance_card {
+  height: 150px;
+  background-color: white;
+  gap: 2.5px;
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  border-radius: 25px;
+  border: 1.5px solid black;
+  box-shadow: 6px 6px black;
+  grid-column: span 2;
+}
+
+.card_img {
+  width: 50px;
+}
+
+.user_table thead tr th {
+  padding: 10px 90px;
+  background: #000;
+  color: white;
+}
+
+.user_table tbody tr th {
+  padding: 8px 0;
+}
+
+.user_history {
+  margin: auto;
+  display: grid;
+  background-image: url('../../Images/banner-landing-page.0bd7f55.jpg');
+  background-size: cover;
+  color: black;
+  padding: 10px;
+}
+
+.user_area_h1 {
+  padding: 25px;
+  margin: left;
+  width: fit-content;
+  background-color: white;
+  color: #000;
+  border-radius: 25px;
+  border: 1.5px solid black;
+  box-shadow: 6px 6px #9E63FF;
+}
+
+.user_table_area {
+  width: 80%;
+  display: grid;
+  margin: auto;
+  gap: 25px;
+  padding: 20px;
+}
+
+.table_row {
+  background-color: white;
+}
+
+.user_history_filters {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 25px;
+}

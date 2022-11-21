@@ -6,6 +6,7 @@ import Login from './Pages/Login/login';
 import Register from './Pages/Register/register';
 import Header from './Components/header';
 import Dashboard from './Pages/Dashboard/dashboard';
+import Pix from './Pages/Dashboard/Transaction/Pix';
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
           <Route path='/' element={ <Login /> } />
           <Route path='/register' element={ <Register /> } />
           <Route path='/user/dashboard' element={ <Dashboard /> } />
+          <Route path='/user/pix' element={ <Pix /> } />
         </Routes>
         </main>
       </MyProvider>

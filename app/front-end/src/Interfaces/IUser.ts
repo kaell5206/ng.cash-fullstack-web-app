@@ -5,7 +5,3 @@ export interface IUser {
   token?: string;
 }
 
-export interface globalContext {
-  userInfo: IUser;
-  setUserInfo: (user: IUser | null) => void;
-}
