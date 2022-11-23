@@ -4,6 +4,7 @@ import Button from "../../../Components/button";
 import { useNavigate } from "react-router-dom";
 import { fetchCreateTransaction } from "../../../service/user";
 import MyContext from "../../../Provider/MyContext";
+import { ITransaction } from "../../../Interfaces/ITransaction";
 
 
 function Pix() {
@@ -15,11 +16,11 @@ function Pix() {
   const  [value, setValue] = useState('')
   const [transactionSucess,setTransactionSucess] = useState(false)
 
-  const handleClick = async () => {
+  const handleClick = async (): Promise<void | React.Dispatch<React.SetStateAction<string | boolean | ITransaction>>> => {
     const user = await fetchCreateTransaction(username, value.replace(',','.'));
     if (!user.debitedAccountId) {
       setError(true)
-      setErrorMsg(user)
+      setErrorMsg(user as string)
     } else {
       setTransactionSucess(true)
     }

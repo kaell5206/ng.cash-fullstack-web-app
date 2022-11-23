@@ -13,10 +13,15 @@
   width: 100%;
   margin: auto;
   display: grid;
-  gap: 2rem;
+  gap: 23rem;
   padding: 25px;
   grid-column: span 4;
-  height: 566px;
+  height: fit-content;
+}
+
+.login_area div {
+  display: grid;
+  gap: 2rem;
 }
 
 .login_images_area {
@@ -43,6 +48,11 @@
   margin: 5px 0;
   padding: 10px;
   border-radius: 10px;
+}
+
+.login_area div label p {
+  margin: 8px 0;
+  color: gray;
 }
 
 .login_area div button {
@@ -92,6 +102,9 @@
   font-size: 1.3rem;
 }
 
+.img_phone {
+  width: 344px;
+}
 
 @media (min-width: 997.98px) {
   .login_section {
@@ -99,11 +112,11 @@
     grid-template-rows: repeat(1, 1fr);
     background-size: cover;
   }
-  
 
   .login_area {
     padding: 25px;
     grid-column: span 1;
+    height: 870px;
   }
 
   .login_area div {
@@ -129,7 +142,7 @@
   
   .login_text_area h1 {
     margin: 10px 0;
-    font-size: 2.3rem;
+    font-size: 2.8rem;
   }
   
   .login_text_area p {
@@ -139,5 +152,9 @@
 
   .appstore_div a {
     margin: 15px;
+  }
+
+  .img_phone {
+    width: 65vh;
   }
 }
