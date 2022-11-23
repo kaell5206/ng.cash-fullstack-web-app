@@ -1,5 +1,5 @@
 
-# NG.Cash a carteira virtual da Nova Genração
+# NG.Cash a carteira virtual da Nova Geração
 
 NG Cash é uma carteira digital da nova geração, onde seu intuito é dar liberdade 
 e educação financeira aos seus usuários.
