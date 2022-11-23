@@ -40,6 +40,4 @@ export default class UserController {
     const { balance } = await AccountService.getBalance(accountId)
     res.status(200).json({ balance })
   }
-
-  
 }

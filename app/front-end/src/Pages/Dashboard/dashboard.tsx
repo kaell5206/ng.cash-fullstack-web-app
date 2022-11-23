@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useCallback, useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Card from "../../Components/card";
 import { fetchTransactionHistory, fetchUserBalance, fetchUserValidation } from "../../service/user";
@@ -7,16 +7,15 @@ import '../Dashboard/style.css'
 import { ITransaction } from "../../Interfaces/ITransaction";
 import { IUser } from "../../Interfaces/IUser";
 import Button from "../../Components/button";
+import MyContext from "../../Provider/MyContext";
+import ResponsiveTable from "../../Components/responsiveTable";
 
 function Dashboard() {
   const navigate = useNavigate()
+  const { setLogedIn } = useContext(MyContext);
   const [userBalance, setUserBalance] = useState(0)
   const [history, setHistory] = useState<ITransaction[]>([]);
   const [filter, setFilter] = useState('');
-
-  // const getHistory = useCallback(async (): Promise<string | void> => {
-    
-  // }, [])
 
   const getBalance = useCallback(async () => {
     const data =  await fetchUserBalance();
@@ -39,10 +38,20 @@ function Dashboard() {
   }, [navigate, validateUser, getBalance])
 
   useEffect(() => {
+    if (!localStorage.getItem('NGUser')) {
+      navigate('/')
+    }
+    if (localStorage.getItem('NGUser')) {
+      setLogedIn(true)
+      navigate('/user/dashboard')
+    }
+  }, [navigate, setLogedIn])
+
+  useEffect(() => {
     const get = async () => { 
       const get = await fetchTransactionHistory() 
       if (get.length <= 0) return "Nenhuma transação encontrada."
-      setHistory(get.reverse())
+      setHistory(get.slice().reverse())
     }
     get()
   }, [])
@@ -65,11 +74,11 @@ function Dashboard() {
       const { accountId } = JSON.parse(local);
       const cashInArr = oldArr.filter(itm => itm.creditedAccountId === accountId);
       const cashOutArr = oldArr.filter(itm => itm.debitedAccountId === accountId);
-      const reverseArr = oldArr.slice().reverse() 
-      console.log(reverseArr);
       if (filter === "cashIn") return cashInArr;
       if (filter === "cashOut")  return cashOutArr;
-      if (filter === "data") return reverseArr;
+      if (filter === "data") {
+        return oldArr.slice().reverse()
+      }
       if (filter === "limpar") return oldArr;
     }
     return oldArr;
@@ -78,9 +87,8 @@ function Dashboard() {
   return (
     <>
     <section className="user_area">
-    <h1 className="user_area_h1">{`Bem vindo de volta ${ getUserName() }`}</h1>
+      <h1 className="user_area_h1">{`Bem vindo de volta ${ getUserName() }`}</h1>
       <div className="user_Balance_card">
-        <h3>Saldo:</h3>
         <h1>{ `R$ ${String(userBalance).replace('.',',')}` }</h1>
       </div>
       <div>
@@ -88,6 +96,32 @@ function Dashboard() {
           cardText="Pix" 
           imgAlt="icone Pix"
           imgUrl={ iconePix }
+          imgTrue
+          cardClass="card_body welcome"
+        />
+      </div>
+      <div>
+        <Card
+          cardText="Meu NG.plus"
+          cardInsideText="NG+"
+          imgTrue={true}
+          cardClass="card_body "
+        />
+      </div>
+      <div className="exemplo_card2">
+        <Card
+          cardText="Card Exemplo"
+          cardInsideText=""
+          imgTrue={false}
+          cardClass="card_body"
+        />
+      </div>
+      <div className="span-2">
+        <Card
+          cardText="Card Exemplo"
+          cardInsideText=""
+          imgTrue={false}
+          cardClass="card_body"
         />
       </div>
     </section>
@@ -97,14 +131,14 @@ function Dashboard() {
         <div>
           <p>Filtrar por: </p>
           <div className="user_history_filters">
-          <Button 
+            <Button
               buttonText="Limpar filtros" 
               isDisabled={false}
               buttonFunc={ (e: React.ChangeEvent<HTMLButtonElement> ) => setFilter(e.target.value) }
               buttonClass="user_area_h1"
               buttonValue="limpar"
             />
-            <Button 
+            <Button
               buttonText="Cash in" 
               isDisabled={false}
               buttonFunc={ (e: React.ChangeEvent<HTMLButtonElement> ) => setFilter(e.target.value) }
@@ -127,6 +161,15 @@ function Dashboard() {
             />
           </div>
         </div>
+        { renderTransactions().map(item => (
+          <ResponsiveTable
+            credited={item.credited.username}
+            debited={item.debited.username}
+            date={formatDate(item.createdAt)}
+            value={item.value}
+            responClass="responsive_table"
+          />
+        ))}
         <table className="user_table">
           <thead>
             <tr>

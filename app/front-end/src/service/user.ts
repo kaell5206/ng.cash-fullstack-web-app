@@ -12,7 +12,7 @@ export const fetchUser = async (username: string, password: string): Promise<IUs
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
         username,
-        password,
+        password
       }),
     });
     const result = await request.json();
@@ -29,7 +29,7 @@ export const fetchRegisterUser = async (username: string, password: string): Pro
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({
       username,
-      password,
+      password
     }),
   });
   const result = await request.json();
@@ -48,7 +48,7 @@ export const fetchUserValidation = async (navigate: NavigateFunction): Promise<I
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
-        Authorization: parsedUser.token,
+        Authorization: parsedUser.token
       } });
     const data = await get.json();
     if (!data.username) {
@@ -66,7 +66,7 @@ export const fetchUserBalance = async (): Promise<any> => {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
-        Authorization: parsedUser.token,
+        Authorization: parsedUser.token
       } });
     const data = await get.json();
     if (!data.balance) {
@@ -84,7 +84,7 @@ export const fetchCreateTransaction = async (creditedUser: string, value: string
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        Authorization: parsedUser.token,
+        Authorization: parsedUser.token
       },
       body: JSON.stringify({ creditedUser, value }),
     });
@@ -104,7 +104,7 @@ export const fetchTransactionHistory = async (): Promise<ITransaction[] | any> =
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
-        Authorization: parsedUser.token,
+        Authorization: parsedUser.token
       },
     });
     const data = await get.json();

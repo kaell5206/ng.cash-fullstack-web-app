@@ -24,12 +24,12 @@ services:
       db:
         condition: service_healthy
     environment:
+      - JWT_SECRET=s3gr3d0@h1m1tsu
       - APP_PORT=3001
-      - JWT_SECRET=jwt_secret
       - DB_USER=root
       - DB_PASS=password
-      - DB_HOST=localhost
-      - DB_PORT=3002
+      - DB_HOST=db
+      - DB_PORT=5432
     healthcheck:
       test: ["CMD", "lsof", "-t", "-i:3001"]
       timeout: 10s

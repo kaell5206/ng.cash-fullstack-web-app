@@ -11,7 +11,7 @@ export default class TransactionController {
       const value = Number(req.body.value)
       if (!authorization) {
         return res.status(401).json({ message: 'Token não encontrado.' });
-      }
+    }
       const { accountId } = Token.readToken(authorization)
       const transac = await TransactionService.create({ creditedUser, value }, Number(accountId))
       res.status(201).json(transac)
@@ -28,7 +28,7 @@ export default class TransactionController {
       const findAll = await TransactionService.findAll(Number(accountId));
       res.status(200).json(findAll)
       } catch (error) {
-        console.log(error);
-      }
+        return res.status(400).json({ message: "Algo deu errado." })
     }
+  }
 }

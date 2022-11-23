@@ -1,8 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import Input from '../../Components/input';
 import Button from '../../Components/button';
 import { Link, useNavigate } from 'react-router-dom'
 import { fetchRegisterUser } from '../../service/user';
+import MyContext from '../../Provider/MyContext';
 
 const regexPassword = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{6,20}$/;
 
@@ -10,6 +11,8 @@ const minLenghtUsername = 3
 
 function Register() {
   const navigate = useNavigate()
+  const { setLogedIn } = useContext(MyContext);
+
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState(false);
@@ -22,6 +25,7 @@ function Register() {
       setError(true)
       setErrorMsg(user)
     } else {
+      setLogedIn(true)
       localStorage.setItem('NGUser', JSON.stringify(user))
       navigate('/user/dashboard')
     }

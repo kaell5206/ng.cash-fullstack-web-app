@@ -2,14 +2,14 @@ FROM node:16.14-alpine
 
 WORKDIR /back-end
 
-COPY package* ./
+COPY package* .
 
 RUN npm install
 
-COPY . ./
+COPY . .
 
 EXPOSE 3001
 
-RUN npx tsc
+RUN npx -y tsc
 
 CMD ["npm", "run", "dev"]

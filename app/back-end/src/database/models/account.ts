@@ -1,7 +1,6 @@
 import { Model, DataTypes } from 'sequelize';
 import { IAccount } from '../../Interfaces/IUser';
 import db from '.'
-import Transaction from './transaction';
 
   export default class Account extends Model<IAccount> implements IAccount {
     id!: number;

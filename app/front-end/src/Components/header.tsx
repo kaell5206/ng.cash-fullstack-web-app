@@ -1,23 +1,17 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext } from 'react';
 import ngLogo from '../Images/logo-ngcash-branco.88c5860.svg'
 import Button from './button';
 import { Link, useNavigate } from 'react-router-dom'
+import MyContext from '../Provider/MyContext';
 
 function Header() {
-  const [logedIn, setLogedIn] = useState(false);
+  const  { logedIn, setLogedIn } = useContext(MyContext);
 
   const navigate = useNavigate()
 
-  useEffect(() => {
-    if(localStorage.getItem('NGUser')) {
-      setLogedIn(true)
-    } else {
-      setLogedIn(false)
-    }
-  }, [])
-
   const handleLogout = () => {
       localStorage.removeItem('NGUser')
+      setLogedIn(false)
       navigate('/')
   }
 
@@ -25,22 +19,23 @@ function Header() {
     <header>
       <nav>
         <div>
-          <Link to={'/'}><img src={ ngLogo } alt="logo NG.Cash em cor branca." width={110}/></Link>
+          <div>
+            <Link to={'/'}><img src={ ngLogo } alt="logo NG.Cash em cor branca." width={90}/></Link>
+          </div>
+          <div>
+            <ul>
+              <li><Link to={'/'}>Inicio</Link></li>
+            </ul>
+          </div>
         </div>
-        <div>
-          <ul>
-            <li><Link to={'/'}>Inicio</Link></li>
-            <li><Link to={'/'}>Carreira</Link></li>
-            <li><Link to={'/'}>Ajuda</Link></li>
-          </ul>
           { logedIn ? (
             <Button 
             isDisabled={ false }
             buttonText="Sair"
             buttonFunc={ handleLogout }
+            buttonClass="logout_button"
           />
           ) : null }
-        </div>
       </nav>
     </header>
   )

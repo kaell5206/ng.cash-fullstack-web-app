@@ -1,14 +1,143 @@
 .login_section {
+  margin: auto;
   background-image: url('../../Images/banner-landing-page.0bd7f55.jpg');
-  background-size: cover;
+  background-size: contain;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  grid-auto-flow: column;
 }
 
 .login_area {
   background-color: white;
-  width: 80%;
+  width: 100%;
   margin: auto;
   display: grid;
   gap: 2rem;
-  padding: 2vw;
+  padding: 25px;
+  grid-column: span 4;
+  height: 566px;
 }
 
+.login_images_area {
+  margin: auto;
+  text-align: center;
+}
+
+.error_msg {
+  font-size: 1.2rem;
+  text-align: center;
+  margin: 15px 0
+}
+
+.app_area {
+  color: white;
+  grid-column: span 4;
+  padding: 35px;
+  justify-content: center;
+  margin: auto;
+}
+
+.login_area div label input {
+  width: 100%;
+  margin: 5px 0;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.login_area div button {
+  width: 100%;
+  margin: 10px 0;
+  padding: 14px;
+  border-radius: 10px;
+}
+
+.button_login {
+  padding: 12px;
+  font-size: 20px;
+  background-color: white;
+  border-radius: 10px;
+  border: 1px solid black;
+  box-shadow: 5px 5px black;
+}
+
+.button_login:disabled {
+  padding: 12px;
+  font-size: 20px;
+  background-color: white;
+  border-radius: 10px;
+  border: 1px solid gray;
+  box-shadow: none;
+}
+
+.register_link_div, .register_link_div p a, .register_link_div p a:active {
+  text-align: center;
+  text-decoration: none;
+  color: black;
+  font-size: 1.2rem;
+}
+
+.appstore_div a {
+  margin: 5px;
+}
+
+.login_text_area h1 {
+  margin: 15px 0;
+  font-size: 2.2rem;
+  font-weight: 600;
+}
+
+.login_text_area p {
+  margin: 10px 0;
+  font-size: 1.3rem;
+}
+
+
+@media (min-width: 997.98px) {
+  .login_section {
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(1, 1fr);
+    background-size: cover;
+  }
+  
+
+  .login_area {
+    padding: 25px;
+    grid-column: span 1;
+  }
+
+  .login_area div {
+    padding: 10px;
+    display: grid;
+    align-items: center;
+    justify-content: center;
+    margin: auto;
+    gap: 1.3rem;
+  }
+
+  .app_area {
+    color: white;
+    grid-column: span 2.5;
+    padding: 5px;
+    justify-content: center;
+    
+  }
+
+  .appstore_div a img {
+    margin: 0;
+  }
+  
+  .login_text_area h1 {
+    margin: 10px 0;
+    font-size: 2.3rem;
+  }
+  
+  .login_text_area p {
+    margin: 5px 0;
+    font-size: 1.5rem;
+  }
+
+  .appstore_div a {
+    margin: 15px;
+  }
+}
