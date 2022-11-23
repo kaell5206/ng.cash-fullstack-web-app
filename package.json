@@ -7,7 +7,8 @@
     "test:coverage": "(cd app && cd back-end && npm run test:coverage)",
     "compose:up": "(cd app && docker-compose up -d --build)",
     "compose:down": "(cd app && docker-compose down --remove-orphans)",
-    "migrate": "(cd app && cd back-end && npx sequelize-cli db:migrate)"
+    "migrate": "(cd app && cd back-end && npx sequelize-cli db:migrate && npx sequelize-cli db:seed:all)",
+    "migrate:undo": "(cd app && cd back-end && npx sequelize-cli db:migrate:undo:all)"
   },
   "repository": {
     "type": "git",
