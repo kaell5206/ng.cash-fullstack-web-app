@@ -11,10 +11,10 @@ const sequelize = new Sequelize(config)
 
 export default class UserService {
   public static async register(body: IUserBody): Promise<IUser> {
+    const { username, password } = body
+    const check = await User.findOne({ where: { username } })
+    if (check) throw new ConflictError("Usuario já existe.");
     const result = sequelize.transaction( async (t) => {
-      const { username, password } = body
-      const check = await User.findOne({ where: { username } })
-      if (check) throw new ConflictError("Usuario já existe.");
       const { id } = await Account.create({ balance: 100.00 }, { transaction: t, raw: true });
       const user = await User.create({ username, password: md5(password), accountId: id },
       { transaction: t, raw: true })

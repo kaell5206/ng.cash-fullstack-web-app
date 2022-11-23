@@ -1,10 +1,10 @@
 import {
   Model, DataTypes
 } from 'sequelize'
+
 import { ITransaction } from '../../Interfaces/ITransaction';
 import db from "."
 import User from './user';
-import Account from './account';
 
   export default class Transaction extends Model<ITransaction> implements ITransaction {
     id!: number;
