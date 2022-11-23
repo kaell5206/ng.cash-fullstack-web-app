@@ -5,7 +5,7 @@ import { IUser } from "../Interfaces/IUser";
 const SUCCESSFULL_REQ_STATUS = 200;
 const SUCCESSFULL_REQ_STATUS_REGISTER = 201;
 
-export const fetchUser = async (username: string, password: string): Promise<IUser | any> => {
+export const fetchUser = async (username: string, password: string): Promise<IUser> => {
     const url = 'http://localhost:3001/user/login'
     const request = await fetch(url, {
       method: 'POST',
@@ -22,7 +22,7 @@ export const fetchUser = async (username: string, password: string): Promise<IUs
     return result;
 }
 
-export const fetchRegisterUser = async (username: string, password: string): Promise<IUser | any> => {
+export const fetchRegisterUser = async (username: string, password: string): Promise<IUser> => {
   const url = 'http://localhost:3001/user/register'
   const request = await fetch(url, {
     method: 'POST',

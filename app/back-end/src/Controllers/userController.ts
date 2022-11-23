@@ -21,7 +21,7 @@ export default class UserController {
       res.status(200).json({ ...user, token })
   }
 
-  public async validate(req: Request, res: Response): Promise<any> {
+  public async validate(req: Request, res: Response): Promise<Response | void> {
     const { authorization } = req.headers;
     if (!authorization) {
       return res.status(401).json({ message: 'Token não encontrado.' });
@@ -30,7 +30,7 @@ export default class UserController {
     res.status(200).json({ id, username, accountId })
   }
 
-  public async userBalance(req: Request, res: Response): Promise<any> {
+  public async userBalance(req: Request, res: Response): Promise<Response | void> {
     const { authorization } = req.headers;
     if (!authorization) {
       return res.status(401).json({ message: 'Token não encontrado.' });

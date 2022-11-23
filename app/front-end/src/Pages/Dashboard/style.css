@@ -38,8 +38,6 @@
   grid-column: span 2;
 }
 
-
-
 .user_Balance_card h1{
   font-size: 3rem;
 }
@@ -161,10 +159,6 @@
   border: 1px solid black;
   box-shadow: 4px 3px black;
 }
-
-
-
-
 
 @media (min-width: 998.98px) {
   .user_area {

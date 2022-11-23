@@ -1,0 +1,48 @@
+.regiter_content {
+  display: grid;
+  width: 100%;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(2, 1fr) ;
+  grid-auto-flow: dense;
+  gap: 10px;
+  margin: auto;
+  justify-content: center;
+  align-items: center;
+}
+
+.register_texts {
+  padding: 30px;
+  display: grid;
+  gap: 20px;
+  grid-column: span 4;
+}
+
+.register_images {
+  grid-column: span 4 ;
+  grid-row: span 1;
+}
+
+.register_label input {
+  width: 100%;
+  padding: 14px;
+  margin: 12px 0;
+}
+
+@media (min-width: 997.98px) {
+  .regiter_content {
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: 1fr;
+    gap: 25px;
+  }
+
+  .register_texts {
+    padding: 30px 60px;
+    gap: 60px;
+    grid-column: span 2;
+  }
+
+  .register_images {
+    grid-column: span 2 ;
+    grid-row: span 0;
+  }
+}

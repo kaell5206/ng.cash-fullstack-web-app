@@ -24,7 +24,7 @@ function Input({ inputType, inputName, inputValue, inputFunc, inputDescription, 
         onChange={ inputFunc }
         
       />
-      { inputDescription }
+      <p>{ inputDescription }</p>
     </label>
   )
 }

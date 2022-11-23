@@ -5,7 +5,7 @@ import TransactionService from "../Services/transactionService";
 
 export default class TransactionController {
   public static async createTransaction(req: Request & { body: ITransacBody},
-     res: Response): Promise<any> {
+     res: Response): Promise<Response | void> {
       const { authorization } = req.headers;
       const { creditedUser } = req.body;
       const value = Number(req.body.value)
@@ -18,7 +18,7 @@ export default class TransactionController {
   }
 
   public static async findAllTransactions(req: Request & { body: ITransacBody},
-    res: Response): Promise<any> { 
+    res: Response): Promise<Response | void> { 
       try {
         const { authorization } = req.headers;
       if (!authorization) {

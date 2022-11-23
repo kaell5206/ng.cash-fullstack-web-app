@@ -8,11 +8,11 @@ import MyContext from '../../Provider/MyContext';
 import phoneImg from '../../Images/home-ngcash-app.49e176e.png';
 import google from '../../Images/googleplay.a58a8ba.png';
 import apple from '../../Images/appstore.a23ac7c.png';
+import { IUser } from '../../Interfaces/IUser';
 
 const minLenghtPassword = 8
 
 function Login() {
-
   const { setLogedIn } = useContext(MyContext);
   const navigate = useNavigate()
   const [username, setUsername] = useState('');
@@ -21,13 +21,11 @@ function Login() {
   const [errorMsg, setErrorMsg] = useState('');
   const [disabled, setDisabled] = useState(true)
 
-
-
-  const handleClick = async () => {
+  const handleClick = async (): Promise<void | React.Dispatch<React.SetStateAction<IUser | string>>> => {
     const user = await fetchUser(username, password);
     if (!user.username) {
       setError(true);
-      setErrorMsg(user);
+      setErrorMsg(user as string);
     } else {
       setLogedIn(true);
       navigate('/user/dashboard');
@@ -58,14 +56,14 @@ function Login() {
         <p>É para todas as idades!</p>
         </div>
         <div className='login_images_area'>
-          <img src={ phoneImg } alt="imagem de um celular com uma interface do app NG.Cash" width={344} />
+          <img className="img_phone" src={ phoneImg } alt="imagem de um celular com uma interface do app NG.Cash"/>
           <div className='appstore_div'>
-          <Link target="_blank" to='https://play.app.goo.gl/?link=https://play.google.com/store/apps/details?id=com.neaglebank&hl=en&utm_source=site&utm_campaign=download-app&pcampaignid=pcampaignidMKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1'>
+          <a target="_blank" rel='noreferrer' href='https://play.app.goo.gl/?link=https://play.google.com/store/apps/details?id=com.neaglebank&hl=en&utm_source=site&utm_campaign=download-app&pcampaignid=pcampaignidMKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1'>
           <img src={google} alt="imagem do botão da play store" width={150}/>
-          </Link>
-          <Link target="_blank" to="https://itunes.apple.com/app/id1480105326">
+          </a>
+          <a target="_blank" rel='noreferrer' href="https://itunes.apple.com/app/id1480105326">
           <img src={apple} alt="imagem do botão da apple store"  width={150}/>
-          </Link>
+          </a>
           </div>
         </div>
       </div>

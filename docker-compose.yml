@@ -47,7 +47,7 @@ services:
       - DB_NAME=NG_CASH
     restart: 'always'
     healthcheck:
-      test: [ "CMD-SHELL", "pg_isready" ]
+      test: ["CMD-SHELL", "pg_isready -d NG_CASH -U root"]
       interval: 5s
       timeout: 5s
       retries: 5

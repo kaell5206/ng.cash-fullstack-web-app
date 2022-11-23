@@ -1,5 +1,6 @@
 import { createContext } from 'react';
+import { IContext } from '../Interfaces/IContext';
 
-const MyContext = createContext<any>({} as any);
+const MyContext = createContext<IContext>({} as IContext);
 
 export default MyContext;

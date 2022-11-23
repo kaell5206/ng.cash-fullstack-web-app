@@ -6,7 +6,7 @@ import MyContext from '../Provider/MyContext';
 
 function Header() {
   const  { logedIn, setLogedIn } = useContext(MyContext);
-
+  
   const navigate = useNavigate()
 
   const handleLogout = () => {
