@@ -7,6 +7,7 @@ import Register from './Pages/Register/register';
 import Header from './Components/header';
 import Dashboard from './Pages/Dashboard/dashboard';
 import Pix from './Pages/Dashboard/Transaction/Pix';
+import Footer from './Components/footer';
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
           <Route path='/user/pix' element={ <Pix /> } />
         </Routes>
         </main>
+        <Footer />
       </MyProvider>
     </BrowserRouter>
   );

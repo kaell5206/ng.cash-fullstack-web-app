@@ -1,10 +1,10 @@
 .user_area {
   display: grid;
   gap: 50px;
-  grid-template-columns: repeat(4, 1fr);
-  width: 80%;
+  grid-template-columns: repeat(2, 1fr);
   padding: 30px;
   margin: auto;
+  grid-auto-flow: row;
 }
 
 .card_body {
@@ -28,18 +28,28 @@
 .user_Balance_card {
   height: 150px;
   background-color: white;
-  gap: 2.5px;
   display: grid;
   justify-content: center;
   align-items: center;
-  text-align: center;
+  text-align: left;
   border-radius: 25px;
   border: 1.5px solid black;
   box-shadow: 6px 6px black;
   grid-column: span 2;
 }
 
+
+
+.user_Balance_card h1{
+  font-size: 3rem;
+}
+
+.user_Balance_card h3 {
+  font-size: 2rem;
+}
+
 .card_img {
+  margin: auto;
   width: 50px;
 }
 
@@ -74,10 +84,10 @@
 }
 
 .user_table_area {
-  width: 80%;
+  width: 100%;
   display: grid;
   margin: auto;
-  gap: 25px;
+  gap: 20px;
   padding: 20px;
 }
 
@@ -87,6 +97,108 @@
 
 .user_history_filters {
   display: grid;
-  grid-template-columns: repeat(6, 1fr);
-  gap: 25px;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+.error_msg {
+  color: red;
+}
+
+.span-2 {
+  grid-column: span 2;
+}
+
+.user_table {
+  display: none;
+}
+
+.welcome {
+  grid-column: span 2;
+}
+
+.exemplo_card2 {
+  grid-column: span 2;
+}
+
+.respon_row {
+  color: black;
+  background-color: white ;
+  display: flex;
+  font-size: 1.2rem;
+  padding: 10px 20px;
+  gap: 20px;
+  border: 1.5px solid black;
+}
+
+.pix_area {
+  height: 600px;
+  margin: auto;
+  padding: 15px;
+}
+
+.pix_area_title {
+  font-size: 2rem;
+  margin: 15px 0;
+}
+
+.pix_area_inputs {
+  padding: 20px 10px;
+}
+
+.pix_area_inputs label input {
+  padding: 10px;
+  width: 100%;
+  margin: 16px 0;
+}
+
+.pix_area_inputs button {
+  width: 100%;
+  padding: 10px;
+  margin: 16px 0;
+  background-color: white;
+  border-radius: 15px;
+  border: 1px solid black;
+  box-shadow: 4px 3px black;
+}
+
+
+
+
+
+@media (min-width: 998.98px) {
+  .user_area {
+    grid-template-columns: repeat(4, 1fr);
+    width: 80%;
+  }
+
+  .user_history {
+    background-size: cover;
+  }
+  
+  .user_table {
+    display: table;
+  }
+
+  .user_history_filters {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .exemplo_card2 {
+    grid-column: span 1;
+  }
+
+  .user_table_area {
+    width: 80%; 
+  }
+
+  .responsive_table {
+    display: none;
+  }
+
+  .pix_area {
+    height: 600px;
+    padding: 15px;
+    width: 40%;
+  }
 }

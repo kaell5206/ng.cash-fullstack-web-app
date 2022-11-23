@@ -1,35 +1,45 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import Input from "../../../Components/input";
 import Button from "../../../Components/button";
-// import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { fetchCreateTransaction } from "../../../service/user";
+import MyContext from "../../../Provider/MyContext";
 
 
 function Pix() {
-  // const navigate = useNavigate()
+  const { setLogedIn } = useContext(MyContext);
+  const navigate = useNavigate()
   const [username, setUsername] = useState('');
   const [error, setError] = useState(false);
   const [errorMsg, setErrorMsg] = useState('');
   const  [value, setValue] = useState('')
-  // const [disabled, setDisabled] = useState(true)
   const [transactionSucess,setTransactionSucess] = useState(false)
 
   const handleClick = async () => {
-    const user = await fetchCreateTransaction(username, value);
+    const user = await fetchCreateTransaction(username, value.replace(',','.'));
     if (!user.debitedAccountId) {
       setError(true)
       setErrorMsg(user)
     } else {
       setTransactionSucess(true)
     }
-  } 
+  }
+
+  useEffect(() => {
+    if (!localStorage.getItem('NGUser')) {
+      navigate('/')
+    }
+    if (localStorage.getItem('NGUser')) {
+      setLogedIn(true)
+    }
+  }, [navigate, setLogedIn]);
 
   
   return (
-    transactionSucess ? <h1>Pix enviado com sucesso!</h1> :
-      <section>
-        <div>
-          <h1>Area de transefencia:</h1>
+    transactionSucess ? <h1 className="error_msg pix_area">Pix enviado com sucesso!</h1> :
+      <section className="pix_area">
+          <h1 className="pix_area_title">Area de transefencia:</h1>
+        <div className="pix_area_inputs">
           {error ? <p>{errorMsg}</p> : null}
           <Input 
             inputName="Usuario"
