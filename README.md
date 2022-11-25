@@ -28,7 +28,7 @@ para me tornar um Dev na NG.Cash.
 Para instalar o projeto siga os passos abaixo:
 
 
-Apos extrair o arquivo e abrir a pasta no VS Code abra o terminal.
+Apos extrair o arquivo ou clonar o repositorio, abra a pasta do projeto no VS Code, abra o terminal.
 
 Dentro da pasta /ng.cash-fullstack-web-app siga esses passos.
 
