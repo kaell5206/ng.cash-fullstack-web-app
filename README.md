@@ -71,7 +71,6 @@ a transferência sem precisar deslogar novamente e criar um novo user.
 
 ```bash
     username: fulanoSilva
-    password: Fulanosenha1
 ```
 ## Rodando os testes
 
