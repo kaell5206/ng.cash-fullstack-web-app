@@ -21,22 +21,22 @@ services:
     platform: linux/x86_64
     working_dir: /back-end
     depends_on:
-      db:
+      ng_cash_db:
         condition: service_healthy
     environment:
       - JWT_SECRET=s3gr3d0@h1m1tsu
       - APP_PORT=3001
       - DB_USER=root
       - DB_PASS=password
-      - DB_HOST=db
+      - DB_HOST=ng_cash_db
       - DB_PORT=5432
     healthcheck:
       test: ["CMD", "lsof", "-t", "-i:3001"]
       timeout: 10s
       retries: 5
-  db:
+  ng_cash_db:
     image: sameersbn/postgresql:12-20200524
-    container_name: db
+    container_name: ng_cash_db
     platform: linux/x86_64
     ports:
       - 3002:5432
